@@ -64,12 +64,12 @@ class _DirectorClassAddSubject extends State<DirectorClassAddSubject> {
                   const SizedBox(height: 15),
                   Text(
                     'E-Vidyalaya ',
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
                   const SizedBox(height: 15),
                   Text(
                     'Add Subject',
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.labelLarge,
                   ),
                   const SizedBox(
                     height: 15,

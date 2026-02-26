@@ -18,7 +18,7 @@ class ErrorScreen extends StatelessWidget {
         ),
         Text(
           'Something Went Wrong',
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme.of(context).textTheme.labelMedium,
         ),
         const SizedBox(
           height: 25,

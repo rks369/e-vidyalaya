@@ -18,7 +18,7 @@ class NoInternet extends StatelessWidget {
         ),
         Text(
           'You\'re Offline',
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme.of(context).textTheme.labelMedium,
         ),
         const SizedBox(
           height: 25,

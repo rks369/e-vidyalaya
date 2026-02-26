@@ -28,7 +28,7 @@ class DirectorChatClasses extends StatelessWidget {
               return Center(
                 child: Text(
                   'No Class Exists !!!',
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
               );
             }

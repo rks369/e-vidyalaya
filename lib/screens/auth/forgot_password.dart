@@ -43,12 +43,12 @@ class ResetPassword extends StatelessWidget {
                       const SizedBox(height: 15),
                       Text(
                         'E-Vidyalaya ',
-                        style: Theme.of(context).textTheme.headline5,
+                        style: Theme.of(context).textTheme.labelMedium,
                       ),
                       const SizedBox(height: 15),
                       Text(
                         'Reset Password',
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.labelLarge,
                       ),
                       const SizedBox(
                         height: 15,

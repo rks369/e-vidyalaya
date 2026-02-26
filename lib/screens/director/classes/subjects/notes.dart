@@ -58,7 +58,7 @@ class _NotesState extends State<Notes> {
 
   @pragma('vm:entry-point')
   static void downloadCallback(
-      String id, DownloadTaskStatus status, int progress) {
+      String id, int status, int progress) {
     final SendPort? send =
         IsolateNameServer.lookupPortByName('downloader_send_port');
     send!.send([id, status, progress]);
@@ -198,7 +198,7 @@ class _NotesState extends State<Notes> {
                 return Center(
                   child: Text(
                     'No Notes Exists !!!',
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.labelMedium,
                   ),
                 );
               }

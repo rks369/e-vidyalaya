@@ -17,7 +17,7 @@ class Loading extends StatelessWidget {
         ),
         Text(
           "Please Wait...",
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.labelLarge,
         ),
       ],
     ));

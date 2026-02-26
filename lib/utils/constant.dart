@@ -14,18 +14,18 @@ const String dummyUserProfileLink =
     'https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1021&q=80';
 
 final eVidalayaDBsettings = ConnectionSettings(
-    host: "89.117.157.52",
+    host: "database-1.cb0cawk44al5.ap-south-1.rds.amazonaws.com",
     port: 3306,
-    user: "u878322104_admin",
-    password: 'Dev@123#',
+    user: "admin",
+    password: 'pass1234',
     db: 'u878322104_evidalaya');
 
 ConnectionSettings getConnctionSettings(String db) {
   return ConnectionSettings(
-      host: "89.117.157.52",
+      host: "database-1.cb0cawk44al5.ap-south-1.rds.amazonaws.com",
       port: 3306,
-      user: "u878322104_root",
-      password: 'Dev@123#',
+      user: "admin",
+      password: 'pass1234',
       db: 'u878322104_jmieti');
 }
 

@@ -28,7 +28,7 @@ class DirectorChatTeachers extends StatelessWidget {
               return Center(
                 child: Text(
                   'No Teacher Exists !!!',
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
               );
             }

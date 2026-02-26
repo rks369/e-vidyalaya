@@ -8,7 +8,7 @@
 PRODUCT_NAME = evidyalaya
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.rks369.evidyalaya
+PRODUCT_BUNDLE_IDENTIFIER = com.asyncit.evidyalaya
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 com.rks369. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2026 com.asyncit. All rights reserved.
