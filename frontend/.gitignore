@@ -58,6 +58,3 @@ GoogleService-Info.plist
 
 # JVM crash dumps
 hs_err_pid*.log
-
-# Web build output
-/public_html/
