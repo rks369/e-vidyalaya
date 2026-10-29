@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class DashBoardTiles extends StatelessWidget {
+class DashboardTile extends StatelessWidget {
 
-  const DashBoardTiles({
+  const DashboardTile({
     super.key,
     required this.icon,
     required this.title,
-    required this.onPress,
+    required this.onTap,
   });
 
   final IconData icon;
   final String title;
-  final VoidCallback onPress;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class DashBoardTiles extends StatelessWidget {
 
     return Card(
       child: InkWell(
-        onTap: onPress,
+        onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(

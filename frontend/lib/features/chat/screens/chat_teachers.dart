@@ -10,15 +10,15 @@ import 'package:evidyalaya/features/chat/screens/chat.dart';
 import 'package:evidyalaya/features/director/services/director_service.dart';
 import 'package:flutter/material.dart';
 
-class DirectorChatTeachers extends StatelessWidget {
+class ChatTeachers extends StatelessWidget {
 
-  const DirectorChatTeachers({super.key});
+  const ChatTeachers({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     return FutureBuilder(
-      future: DirectorService.getTeachersList(),
+      future: DirectorService.getTeacherList(),
       builder: (context, snapshot) {
 
         if (snapshot.hasError) {

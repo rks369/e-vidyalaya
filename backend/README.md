@@ -130,7 +130,7 @@ Admin tokens last 12 hours, are rejected by every institute route and by the cha
 ## Passwords and sign-in
 
 - Passwords are stored as per-user salted `scrypt` hashes. There is no password secret to configure.
-- New institutes and users get a generated password that is e-mailed, never shown by the API. The director's User ID is `director@<domain>.evidalaya.in`.
+- New institutes and users get a generated password that is e-mailed, never shown by the API. The director's User ID is `director@<domain>.evidyalaya.in`.
 - **Forgotten password** (institute users and admins work the same way): `forgot-password` e-mails an 8-character one-time code and changes nothing yet. The answer is identical whether or not the account exists, so nobody can probe for usernames or lock someone out. `reset-password` then sets the new password. The code works once (even if two requests use it at the same moment), expires after 15 minutes, and allows 5 tries in total; asking for a new code starts over.
 - New passwords need at least 8 characters.
 - Institute-user tokens last 30 days.

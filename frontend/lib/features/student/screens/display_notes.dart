@@ -22,7 +22,7 @@ class DisplayNotes extends StatelessWidget {
         title: Text(subjectModel.name),
       ),
       body: FutureBuilder(
-        future: DirectorService.getNotesList(subjectId: subjectModel.id),
+        future: DirectorService.getNoteList(subjectId: subjectModel.id),
         builder: (context, snapshot) {
 
           if (snapshot.hasError) {

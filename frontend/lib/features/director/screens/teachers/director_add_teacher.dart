@@ -136,15 +136,14 @@ class DirectorAddTeacher extends StatelessWidget {
                           name: name.text,
                           email: email.text,
                           phone: mobile.text,
-                          // ignore: prefer_interpolation_to_compose_strings
                           userName:
-                              name.text.split(' ')[0] + id.text + '@' + domain,
+                              '${name.text.split(' ')[0]}${id.text}@$domain',
                           designation: 'Teacher',
                           profilePicture: 'profilePicture',
                           currentClass: -1,
                         );
 
-                        DirectorService.addteacher(
+                        DirectorService.addTeacher(
                           context: context,
                           userModel: userModel,
                         ).then(

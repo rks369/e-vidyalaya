@@ -7,7 +7,7 @@ import 'package:evidyalaya/core/widgets/empty_state.dart';
 import 'package:evidyalaya/core/widgets/error.dart';
 import 'package:evidyalaya/core/widgets/loading.dart';
 import 'package:evidyalaya/features/director/screens/classes/director_add_class.dart';
-import 'package:evidyalaya/features/director/screens/classes/director_class_student.dart';
+import 'package:evidyalaya/features/director/screens/classes/director_class_students.dart';
 import 'package:evidyalaya/features/director/screens/classes/director_class_subjects.dart';
 import 'package:evidyalaya/features/director/services/director_service.dart';
 import 'package:flutter/material.dart';
@@ -82,10 +82,10 @@ class DirectorClasses extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Expanded(
-                                      child: DashBoardTiles(
+                                      child: DashboardTile(
                                         icon: Icons.groups_outlined,
                                         title: 'Students',
-                                        onPress: () {
+                                        onTap: () {
 
                                           changeScreen(
                                             context: context,
@@ -99,10 +99,10 @@ class DirectorClasses extends StatelessWidget {
                                     ),
                                     const SizedBox(width: 12),
                                     Expanded(
-                                      child: DashBoardTiles(
+                                      child: DashboardTile(
                                         icon: Icons.menu_book_outlined,
                                         title: 'Subjects',
-                                        onPress: () {
+                                        onTap: () {
 
                                           changeScreen(
                                             context: context,

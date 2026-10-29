@@ -7,9 +7,9 @@ import 'package:evidyalaya/core/widgets/no_internet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class PrivacyPloicy extends StatelessWidget {
+class PrivacyPolicy extends StatelessWidget {
 
-  const PrivacyPloicy({Key? key}) : super(key: key);
+  const PrivacyPolicy({super.key});
 
   @override
   Widget build(BuildContext context) {

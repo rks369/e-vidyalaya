@@ -34,7 +34,7 @@ export class InstituteService {
             email: Validate.email({ value: email }),
             logo: Validate.optionalUrl({ value: logo, name: 'logo', max: 512 }),
         };
-        const userName = `director@${institute.domain}.evidalaya.in`;
+        const userName = `director@${institute.domain}.evidyalaya.in`;
         const password = Password.randomPassword();
         const passwordHash = await Password.hash({ password });
 

@@ -5,15 +5,15 @@ class SimpleTile extends StatelessWidget {
   const SimpleTile({
     super.key,
     required this.title,
-    required this.firsticon,
-    required this.lasticon,
-    required this.ontap,
+    required this.leading,
+    required this.trailing,
+    required this.onTap,
   });
 
   final String title;
-  final Widget firsticon;
-  final VoidCallback ontap;
-  final Widget lasticon;
+  final Widget leading;
+  final VoidCallback onTap;
+  final Widget trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +22,11 @@ class SimpleTile extends StatelessWidget {
 
     return Card(
       child: ListTile(
-        onTap: ontap,
+        onTap: onTap,
         leading: CircleAvatar(
           backgroundColor: scheme.primaryContainer,
           foregroundColor: scheme.onPrimaryContainer,
-          child: firsticon,
+          child: leading,
         ),
         title: Text(
           title,
@@ -38,7 +38,7 @@ class SimpleTile extends StatelessWidget {
             size: 18,
             color: scheme.onSurfaceVariant,
           ),
-          child: lasticon,
+          child: trailing,
         ),
       ),
     );

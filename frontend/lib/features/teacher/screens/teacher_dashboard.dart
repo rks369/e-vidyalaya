@@ -1,25 +1,25 @@
 import 'package:evidyalaya/core/services/change_screen.dart';
 import 'package:evidyalaya/core/widgets/dashboard_tile.dart';
 import 'package:evidyalaya/core/widgets/responsive.dart';
-import 'package:evidyalaya/features/chat/screens/director_chat.dart';
+import 'package:evidyalaya/features/chat/screens/chat_tabs.dart';
 import 'package:evidyalaya/features/teacher/screens/teacher_classes.dart';
 import 'package:evidyalaya/features/teacher/screens/teacher_students.dart';
-import 'package:evidyalaya/features/teacher/screens/teacher_subject.dart';
+import 'package:evidyalaya/features/teacher/screens/teacher_subjects.dart';
 import 'package:flutter/material.dart';
 
-class TeacherDashBoard extends StatelessWidget {
+class TeacherDashboard extends StatelessWidget {
 
-  const TeacherDashBoard({super.key});
+  const TeacherDashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     return DashboardGrid(
       children: [
-        DashBoardTiles(
+        DashboardTile(
           icon: Icons.school_outlined,
           title: 'Classes',
-          onPress: () {
+          onTap: () {
 
             changeScreen(
               context: context,
@@ -28,10 +28,10 @@ class TeacherDashBoard extends StatelessWidget {
 
           },
         ),
-        DashBoardTiles(
+        DashboardTile(
           icon: Icons.menu_book_outlined,
           title: 'Subjects',
-          onPress: () {
+          onTap: () {
 
             changeScreen(
               context: context,
@@ -40,10 +40,10 @@ class TeacherDashBoard extends StatelessWidget {
 
           },
         ),
-        DashBoardTiles(
+        DashboardTile(
           icon: Icons.groups_outlined,
           title: 'Students',
-          onPress: () {
+          onTap: () {
 
             changeScreen(
               context: context,
@@ -52,14 +52,14 @@ class TeacherDashBoard extends StatelessWidget {
 
           },
         ),
-        DashBoardTiles(
+        DashboardTile(
           icon: Icons.chat_bubble_outline_rounded,
           title: 'Chat',
-          onPress: () {
+          onTap: () {
 
             changeScreen(
               context: context,
-              screen: const DirectorChat(),
+              screen: const ChatTabs(),
             );
 
           },

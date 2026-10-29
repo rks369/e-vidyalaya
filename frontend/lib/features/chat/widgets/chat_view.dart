@@ -228,7 +228,7 @@ class _ChatViewState extends State<ChatView> {
       return const Loading();
     }
     if (_messages.isEmpty) {
-      return Center(child: Text(_error ?? 'No message Exixts !!!'));
+      return Center(child: Text(_error ?? 'No messages yet'));
     }
     final newestFirst = _messages.reversed.toList();
     return ListView.builder(

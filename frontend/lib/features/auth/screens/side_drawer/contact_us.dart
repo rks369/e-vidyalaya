@@ -11,7 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatelessWidget {
 
-  const ContactUs({Key? key}) : super(key: key);
+  const ContactUs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class ContactUs extends StatelessWidget {
                     const SizedBox(height: 16),
                     SimpleTile(
                       title: "admin@evidyalaya.in",
-                      ontap: () async {
+                      onTap: () async {
 
                         await launchUrl(
                           Uri(
@@ -53,12 +53,12 @@ class ContactUs extends StatelessWidget {
                         );
 
                       },
-                      firsticon: const Icon(Icons.email),
-                      lasticon: const Icon(Icons.arrow_forward_ios),
+                      leading: const Icon(Icons.email),
+                      trailing: const Icon(Icons.arrow_forward_ios),
                     ),
                     SimpleTile(
                       title: "+91 9998887776",
-                      ontap: () async {
+                      onTap: () async {
 
                         await launchUrl(
                           Uri(
@@ -68,12 +68,12 @@ class ContactUs extends StatelessWidget {
                         );
 
                       },
-                      firsticon: const Icon(Icons.phone),
-                      lasticon: const Icon(Icons.arrow_forward_ios),
+                      leading: const Icon(Icons.phone),
+                      trailing: const Icon(Icons.arrow_forward_ios),
                     ),
                     SimpleTile(
-                      title: "www.evidayalaya.edu.in",
-                      ontap: () async {
+                      title: "www.evidyalaya.edu.in",
+                      onTap: () async {
 
                         await launchUrl(
                           Uri.parse('https://www.assetsync.tech'),
@@ -81,8 +81,8 @@ class ContactUs extends StatelessWidget {
                         );
 
                       },
-                      firsticon: const Icon(Icons.public),
-                      lasticon: const Icon(Icons.arrow_forward_ios),
+                      leading: const Icon(Icons.public),
+                      trailing: const Icon(Icons.arrow_forward_ios),
                     ),
                   ],
                 ),

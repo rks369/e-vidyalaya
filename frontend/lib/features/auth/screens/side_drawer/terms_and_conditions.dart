@@ -7,16 +7,16 @@ import 'package:evidyalaya/core/widgets/no_internet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TermsAndCondtions extends StatelessWidget {
+class TermsAndConditions extends StatelessWidget {
 
-  const TermsAndCondtions({Key? key}) : super(key: key);
+  const TermsAndConditions({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Terms And Condtions'),
+        title: const Text('Terms And Conditions'),
       ),
       body: BlocBuilder<ConnectionCubit, ConnectionStates>(
         builder: (context, state) {
