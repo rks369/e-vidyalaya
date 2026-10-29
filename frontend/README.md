@@ -82,22 +82,22 @@ flutter build web -t lib/main_admin.dart --dart-define-from-file=env.json -o bui
 
 ### Web build into `public_html`
 
-Build each web app in release mode and copy it into a `public_html` folder next to `frontend/` (git-ignored). The user app goes to the root of `public_html` and the admin app to `public_html/admin`; upload the whole folder to your host. Run these from `frontend/` in PowerShell.
+Build each web app in release mode and copy it into `frontend/public_html` (git-ignored). The user app goes to the root of `public_html` and the admin app to `public_html/admin`; upload the whole folder to your host. Run these from `frontend/` in PowerShell.
 
 User app:
 
 ```powershell
 flutter build web --release -t lib/main_user.dart --dart-define-from-file=env.json --base-href / -o build/web_user
-New-Item -ItemType Directory -Force ../public_html
-Copy-Item build/web_user/* ../public_html -Recurse -Force
+New-Item -ItemType Directory -Force public_html
+Copy-Item build/web_user/* public_html -Recurse -Force
 ```
 
 Admin app (it lives in a subfolder, so it needs its own base path):
 
 ```powershell
 flutter build web --release -t lib/main_admin.dart --dart-define-from-file=env.json --base-href /admin/ -o build/web_admin
-New-Item -ItemType Directory -Force ../public_html/admin
-Copy-Item build/web_admin/* ../public_html/admin -Recurse -Force
+New-Item -ItemType Directory -Force public_html/admin
+Copy-Item build/web_admin/* public_html/admin -Recurse -Force
 ```
 
 `API_BASE_URL` is baked in at build time from `env.json`, so check it points at your public API before building. The site must be served over HTTPS when the API is.
