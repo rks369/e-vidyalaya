@@ -1,12 +1,12 @@
-import 'package:evidyalaya/features/chat/screens/director_chat_classes.dart';
-import 'package:evidyalaya/features/chat/screens/director_chat_students.dart';
-import 'package:evidyalaya/features/chat/screens/director_chat_subject.dart';
-import 'package:evidyalaya/features/chat/screens/director_chat_teachers.dart';
+import 'package:evidyalaya/features/chat/screens/chat_classes.dart';
+import 'package:evidyalaya/features/chat/screens/chat_students.dart';
+import 'package:evidyalaya/features/chat/screens/chat_subjects.dart';
+import 'package:evidyalaya/features/chat/screens/chat_teachers.dart';
 import 'package:flutter/material.dart';
 
-class DirectorChat extends StatelessWidget {
+class ChatTabs extends StatelessWidget {
 
-  const DirectorChat({super.key});
+  const ChatTabs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +39,10 @@ class DirectorChat extends StatelessWidget {
         ),
         body: const TabBarView(
           children: [
-            DirectorChatClasses(),
-            DirectorChatSubjects(),
-            DirectorChatTeachers(),
-            DirectorChatStudents(),
+            ChatClasses(),
+            ChatSubjects(),
+            ChatTeachers(),
+            ChatStudents(),
           ],
         ),
       ),

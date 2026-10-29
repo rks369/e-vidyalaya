@@ -15,9 +15,9 @@ class Home extends StatelessWidget {
   Widget _dashboard({required UserModel user}) {
 
     return switch (user.designation.toUpperCase()) {
-      'DIRECTOR' => const DirectorDashBoard(),
-      'TEACHER' => const TeacherDashBoard(),
-      'STUDENT' => const StudentDashBoard(),
+      'DIRECTOR' => const DirectorDashboard(),
+      'TEACHER' => const TeacherDashboard(),
+      'STUDENT' => const StudentDashboard(),
       _ => const Center(child: Text('Your role has no dashboard')),
     };
 

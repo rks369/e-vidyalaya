@@ -24,7 +24,7 @@ The two Android apps have different application IDs (`com.asyncit.evidyalaya` an
 | --- | --- |
 | **User app** (web) | https://e-vidyalaya.onrender.com/ |
 | **Admin app** (web) | https://e-vidyalaya-admin.onrender.com |
-| **API** | https://evidyalaya.onrender.com (health check: https://evidyalaya.onrender.com/health) |
+| **API** | https://e-vidyalaya-api.onrender.com/ (health check: https://e-vidyalaya-api.onrender.com/health) |
 | **Android APKs** (user and admin) | [Latest release](https://github.com/rks369/evidyalaya/releases/latest) |
 
 The apps run on Render's free tier, so the first request after a quiet period can take up to a minute while the API wakes up.

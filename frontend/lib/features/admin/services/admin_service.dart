@@ -68,7 +68,7 @@ class AdminService {
       }
       showSuccessMessage(
         context: context,
-        message: 'Institute Added Sucessfully',
+        message: 'Institute Added Successfully',
       );
       Navigator.pop(context);
     } on ApiException catch (e) {

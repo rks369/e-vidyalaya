@@ -31,7 +31,7 @@ class _TeacherAddStudentState extends State<TeacherAddStudent> {
 
   }
 
-  getClassList() async {
+  Future<void> getClassList() async {
 
     TeacherService.getClassList().then((value) {
 
@@ -190,12 +190,8 @@ class _TeacherAddStudentState extends State<TeacherAddStudent> {
                           name: name.text,
                           email: email.text,
                           phone: mobile.text,
-                          // ignore: prefer_interpolation_to_compose_strings
                           userName:
-                              name.text.split(' ')[0] +
-                              roll.text +
-                              '@' +
-                              domain,
+                              '${name.text.split(' ')[0]}${roll.text}@$domain',
                           designation: 'Student',
                           profilePicture: 'profilePicture',
                           currentClass: currentClass,

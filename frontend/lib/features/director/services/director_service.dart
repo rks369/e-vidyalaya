@@ -41,7 +41,7 @@ class DirectorService {
 
   }
 
-  static Future<List<UserModel>> getTeachersList() async {
+  static Future<List<UserModel>> getTeacherList() async {
 
     final rows = await _list(path: '/teachers');
     return rows.map((row) => UserModel.fromJson(json: row)).toList();
@@ -79,7 +79,7 @@ class DirectorService {
 
   }
 
-  static Future<List<NotesModel>> getNotesList({required int subjectId}) async {
+  static Future<List<NotesModel>> getNoteList({required int subjectId}) async {
 
     final rows = await _list(path: '/subjects/$subjectId/notes');
     return rows
@@ -112,10 +112,10 @@ class DirectorService {
 
   }
 
-  static Future<void> createClass({
+  static Future<void> addClass({
     required BuildContext context,
     required String className,
-    required UserModel tecaher,
+    required UserModel teacher,
   }) async {
 
     try {
@@ -123,7 +123,7 @@ class DirectorService {
         path: '/classes',
         body: {
           'className': className,
-          'teacherId': tecaher.id,
+          'teacherId': teacher.id,
         },
       );
       if (!context.mounted) {
@@ -131,7 +131,7 @@ class DirectorService {
       }
       showSuccessMessage(
         context: context,
-        message: 'Class Created Sucessfully',
+        message: 'Class Created Successfully',
       );
       Navigator.pop(context);
       Navigator.pop(context);
@@ -150,7 +150,7 @@ class DirectorService {
     required BuildContext context,
     required int classId,
     required String subjectName,
-    required UserModel tecaher,
+    required UserModel teacher,
   }) async {
 
     try {
@@ -159,7 +159,7 @@ class DirectorService {
         body: {
           'classId': classId,
           'subjectName': subjectName,
-          'teacherId': tecaher.id,
+          'teacherId': teacher.id,
         },
       );
       if (!context.mounted) {
@@ -167,7 +167,7 @@ class DirectorService {
       }
       showSuccessMessage(
         context: context,
-        message: 'Class Created Sucessfully',
+        message: 'Class Created Successfully',
       );
       Navigator.pop(context);
       Navigator.pop(context);
@@ -197,7 +197,7 @@ class DirectorService {
     },
   );
 
-  static Future<void> addteacher({
+  static Future<void> addTeacher({
     required BuildContext context,
     required UserModel userModel,
   }) =>
@@ -248,7 +248,7 @@ class DirectorService {
       if (result['emailed'] == true) {
         showSuccessMessage(
           context: context,
-          message: '$label Added Sucessfully',
+          message: '$label Added Successfully',
         );
       } else {
         showErrorMessage(

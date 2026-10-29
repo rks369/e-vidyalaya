@@ -95,7 +95,7 @@ class _LoginState extends State<Login> {
                     return 'Please Enter The User ID';
                   }
                   if (!text.contains('@')) {
-                    return 'The User ID looks like name@school.evidalaya.in';
+                    return 'The User ID looks like name@school.evidyalaya.in';
                   }
                   return null;
 
@@ -139,7 +139,7 @@ class _LoginState extends State<Login> {
                 child: TextButton(
                   onPressed: () => changeScreen(
                     context: context,
-                    screen: const ResetPassword(),
+                    screen: const ForgotPassword(),
                   ),
                   child: const Text('Forgot Password ?'),
                 ),

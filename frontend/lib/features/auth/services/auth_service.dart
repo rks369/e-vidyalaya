@@ -30,7 +30,7 @@ class AuthService {
       if (context.mounted) {
         showSuccessMessage(
           context: context,
-          message: 'Login SucessFully',
+          message: 'Login Successfully',
         );
       }
       return UserModel.fromJson(json: result['user']);

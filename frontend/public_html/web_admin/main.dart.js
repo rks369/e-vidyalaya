@@ -8275,7 +8275,7 @@ break}j=A.W(a).ax
 l=j.d
 if(l==null)l=j.b
 k=j.e
-A.aEO(l,a,k==null?j.c:k,"Institute Added Sucessfully")
+A.aEO(l,a,k==null?j.c:k,"Institute Added Successfully")
 A.hQ(a,!1).qZ(null)
 p=2
 s=6
@@ -43616,7 +43616,7 @@ A.lN.prototype={
 k(a){return this.a},
 $ibI:1}
 A.ZP.prototype={
-RO(a,b,c,d){var s,r,q,p,o,n,m,l,k=A.hm("https://evidyalaya.onrender.com"+c),j=A.aNO(b,k.YG(null))
+RO(a,b,c,d){var s,r,q,p,o,n,m,l,k=A.hm("https://e-vidyalaya-api.onrender.com"+c),j=A.aNO(b,k.YG(null))
 k=j.r
 k.m(0,"content-type","application/json")
 s=t.N

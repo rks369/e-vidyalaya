@@ -30,7 +30,7 @@ class _NotesState extends State<Notes> {
   late Future<List<NotesModel>> _notes = _loadNotes();
 
   Future<List<NotesModel>> _loadNotes() =>
-      DirectorService.getNotesList(subjectId: widget.subjectModel.id);
+      DirectorService.getNoteList(subjectId: widget.subjectModel.id);
 
   Future<void> _pickAndUpload({required Future<PickedFile?> Function() pick}) async {
 
@@ -77,7 +77,7 @@ class _NotesState extends State<Notes> {
       Navigator.pop(context);
       showSuccessMessage(
         context: context,
-        message: 'Note Added Sucessfully',
+        message: 'Note Added Successfully',
       );
       setState(() {
 

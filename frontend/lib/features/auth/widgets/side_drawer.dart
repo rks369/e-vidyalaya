@@ -6,8 +6,8 @@ import 'package:evidyalaya/features/auth/screens/login.dart';
 import 'package:evidyalaya/features/auth/screens/side_drawer/about_us.dart';
 import 'package:evidyalaya/features/auth/screens/side_drawer/contact_us.dart';
 import 'package:evidyalaya/features/auth/screens/side_drawer/privacy_policy.dart';
-import 'package:evidyalaya/features/auth/screens/side_drawer/profile.dart';
-import 'package:evidyalaya/features/auth/screens/side_drawer/terms_condition.dart';
+import 'package:evidyalaya/features/auth/screens/side_drawer/terms_and_conditions.dart';
+import 'package:evidyalaya/features/auth/screens/side_drawer/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,12 +44,12 @@ class SideDrawer extends StatelessWidget {
       case 3:
         changeScreen(
           context: context,
-          screen: const PrivacyPloicy(),
+          screen: const PrivacyPolicy(),
         );
       case 4:
         changeScreen(
           context: context,
-          screen: const TermsAndCondtions(),
+          screen: const TermsAndConditions(),
         );
       case 5:
         context.read<AuthCubit>().logout();

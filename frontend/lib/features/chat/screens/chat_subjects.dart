@@ -1,4 +1,4 @@
-import 'package:evidyalaya/core/models/class_model.dart';
+import 'package:evidyalaya/core/models/subject_model.dart';
 import 'package:evidyalaya/core/services/change_screen.dart';
 import 'package:evidyalaya/core/widgets/adaptive_list.dart';
 import 'package:evidyalaya/core/widgets/app_list_tile.dart';
@@ -10,15 +10,15 @@ import 'package:evidyalaya/features/chat/services/chat_service.dart';
 import 'package:evidyalaya/features/director/services/director_service.dart';
 import 'package:flutter/material.dart';
 
-class DirectorChatClasses extends StatelessWidget {
+class ChatSubjects extends StatelessWidget {
 
-  const DirectorChatClasses({super.key});
+  const ChatSubjects({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     return FutureBuilder(
-      future: DirectorService.getClassList(),
+      future: DirectorService.getAllSubjectList(),
       builder: (context, snapshot) {
 
         if (snapshot.hasError) {
@@ -27,12 +27,12 @@ class DirectorChatClasses extends StatelessWidget {
         if (!snapshot.hasData) {
           return const Loading();
         } else {
-          List<ClassModel> list = snapshot.data!;
+          List<SubjectModel> list = snapshot.data!;
 
           if (list.isEmpty) {
             return const EmptyState(
-              message: 'No classes yet',
-              icon: Icons.school_outlined,
+              message: 'No subjects yet',
+              icon: Icons.menu_book_outlined,
             );
           }
           return AdaptiveList(
@@ -45,14 +45,15 @@ class DirectorChatClasses extends StatelessWidget {
                   vertical: 4,
                 ),
                 child: AppListTile(
-                  leading: const Icon(Icons.group),
+                  leading: CircleAvatar(child: Text(list[index].name[0])),
+                  subtitle: Text(list[index].className!),
                   title: Text(list[index].name),
                   onTap: () {
 
                     changeScreen(
                       context: context,
                       screen: GroupChat(
-                        kind: ChatKind.classGroup,
+                        kind: ChatKind.subject,
                         groupName: list[index].name,
                         groupId: list[index].id,
                       ),

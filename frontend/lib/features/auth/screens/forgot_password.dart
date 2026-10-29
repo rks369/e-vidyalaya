@@ -8,16 +8,16 @@ import 'package:evidyalaya/core/widgets/responsive.dart';
 import 'package:evidyalaya/features/auth/screens/reset_with_code.dart';
 import 'package:flutter/material.dart';
 
-class ResetPassword extends StatefulWidget {
+class ForgotPassword extends StatefulWidget {
 
-  const ResetPassword({super.key});
+  const ForgotPassword({super.key});
 
   @override
-  State<ResetPassword> createState() => _ResetPasswordState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 
 }
 
-class _ResetPasswordState extends State<ResetPassword> {
+class _ForgotPasswordState extends State<ForgotPassword> {
 
   final _formKey = GlobalKey<FormState>();
   final _userName = TextEditingController();
@@ -96,7 +96,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   return 'Please Enter The User ID';
                 }
                 if (!EmailValidator.validate(email: text)) {
-                  return 'The User ID looks like name@school.evidalaya.in';
+                  return 'The User ID looks like name@school.evidyalaya.in';
                 }
                 return null;
 

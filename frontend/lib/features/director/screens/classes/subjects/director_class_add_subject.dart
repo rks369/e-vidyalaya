@@ -26,14 +26,14 @@ class _DirectorClassAddSubject extends State<DirectorClassAddSubject> {
   @override
   void initState() {
 
-    setTeaherList();
+    setTeacherList();
     super.initState();
 
   }
 
-  setTeaherList() async {
+  Future<void> setTeacherList() async {
 
-    DirectorService.getTeachersList().then((value) {
+    DirectorService.getTeacherList().then((value) {
 
       setState(() {
 
@@ -122,7 +122,7 @@ class _DirectorClassAddSubject extends State<DirectorClassAddSubject> {
                           context: context,
                           classId: widget.classId,
                           subjectName: name.text,
-                          tecaher: classTeacher,
+                          teacher: classTeacher,
                         ).whenComplete(() {
 
                           Navigator.pop(context);

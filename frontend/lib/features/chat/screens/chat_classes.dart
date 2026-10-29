@@ -1,24 +1,24 @@
-import 'package:evidyalaya/core/models/user_model.dart';
+import 'package:evidyalaya/core/models/class_model.dart';
 import 'package:evidyalaya/core/services/change_screen.dart';
 import 'package:evidyalaya/core/widgets/adaptive_list.dart';
 import 'package:evidyalaya/core/widgets/app_list_tile.dart';
 import 'package:evidyalaya/core/widgets/empty_state.dart';
 import 'package:evidyalaya/core/widgets/error.dart';
 import 'package:evidyalaya/core/widgets/loading.dart';
-import 'package:evidyalaya/core/widgets/user_avatar.dart';
-import 'package:evidyalaya/features/chat/screens/chat.dart';
+import 'package:evidyalaya/features/chat/screens/group_chat.dart';
+import 'package:evidyalaya/features/chat/services/chat_service.dart';
 import 'package:evidyalaya/features/director/services/director_service.dart';
 import 'package:flutter/material.dart';
 
-class DirectorChatStudents extends StatelessWidget {
+class ChatClasses extends StatelessWidget {
 
-  const DirectorChatStudents({super.key});
+  const ChatClasses({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     return FutureBuilder(
-      future: DirectorService.getStudentList(),
+      future: DirectorService.getClassList(),
       builder: (context, snapshot) {
 
         if (snapshot.hasError) {
@@ -27,12 +27,12 @@ class DirectorChatStudents extends StatelessWidget {
         if (!snapshot.hasData) {
           return const Loading();
         } else {
-          List<UserModel> list = snapshot.data!;
+          List<ClassModel> list = snapshot.data!;
 
           if (list.isEmpty) {
             return const EmptyState(
-              message: 'No students yet',
-              icon: Icons.groups_outlined,
+              message: 'No classes yet',
+              icon: Icons.school_outlined,
             );
           }
           return AdaptiveList(
@@ -45,16 +45,17 @@ class DirectorChatStudents extends StatelessWidget {
                   vertical: 4,
                 ),
                 child: AppListTile(
-                  leading: UserAvatar(
-                    name: list[index].name,
-                    url: list[index].profilePicture,
-                  ),
+                  leading: const Icon(Icons.group),
                   title: Text(list[index].name),
                   onTap: () {
 
                     changeScreen(
                       context: context,
-                      screen: Chat(userModel: list[index]),
+                      screen: GroupChat(
+                        kind: ChatKind.classGroup,
+                        groupName: list[index].name,
+                        groupId: list[index].id,
+                      ),
                     );
 
                   },

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 class ChangePassword extends StatelessWidget {
 
-  const ChangePassword({Key? key}) : super(key: key);
+  const ChangePassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +127,7 @@ class ChangePassword extends StatelessWidget {
                               }
                               showSuccessMessage(
                                 context: context,
-                                message: 'Password Changed Sucessfully!',
+                                message: 'Password Changed Successfully!',
                               );
                               Navigator.pop(context);
                               Navigator.pop(context);

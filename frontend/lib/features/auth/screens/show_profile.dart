@@ -11,10 +11,11 @@ import 'package:url_launcher/url_launcher.dart';
 class ShowProfile extends StatelessWidget {
 
   final UserModel userModel;
+  
   const ShowProfile({
-    Key? key,
+    super.key,
     required this.userModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -34,7 +34,7 @@ class DirectorTeachers extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       body: FutureBuilder(
-        future: DirectorService.getTeachersList(),
+        future: DirectorService.getTeacherList(),
         builder: (context, snapshot) {
 
           if (snapshot.hasError) {

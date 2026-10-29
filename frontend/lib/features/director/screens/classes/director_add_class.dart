@@ -22,14 +22,14 @@ class _DirectorAddClassState extends State<DirectorAddClass> {
   @override
   void initState() {
 
-    setTeaherList();
+    setTeacherList();
     super.initState();
 
   }
 
-  setTeaherList() async {
+  Future<void> setTeacherList() async {
 
-    DirectorService.getTeachersList().then((value) {
+    DirectorService.getTeacherList().then((value) {
 
       setState(() {
 
@@ -90,7 +90,7 @@ class _DirectorAddClassState extends State<DirectorAddClass> {
                   const SizedBox(height: 10),
                   DropdownButtonFormField(
                     decoration: const InputDecoration(
-                      labelText: 'Class Teaher',
+                      labelText: 'Class Teacher',
                       hintText: 'Select Class Teacher',
                       prefixIcon: Icon(Icons.person),
                     ),
@@ -114,10 +114,10 @@ class _DirectorAddClassState extends State<DirectorAddClass> {
 
                       if (formKey.currentState!.validate()) {
                         showProgressDialog(context: context);
-                        DirectorService.createClass(
+                        DirectorService.addClass(
                           context: context,
                           className: name.text,
-                          tecaher: classTeacher,
+                          teacher: classTeacher,
                         ).whenComplete(() {
 
                           Navigator.pop(context);
