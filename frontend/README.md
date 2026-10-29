@@ -82,22 +82,22 @@ flutter build web -t lib/main_admin.dart --dart-define-from-file=env.json -o bui
 
 ### Web build into `public_html`
 
-Build each web app in release mode and copy it into `frontend/public_html` (git-ignored). The user app goes to the root of `public_html` and the admin app to `public_html/admin`; upload the whole folder to your host. Run these from `frontend/` in PowerShell.
+Each web app is a separate site, so both are built with the default base path `/`. Copy each build into its own folder under `frontend/public_html` (git-ignored) and upload that folder to its own site or domain. Run these from `frontend/` in PowerShell.
 
 User app:
 
 ```powershell
-flutter build web --release -t lib/main_user.dart --dart-define-from-file=env.json --base-href / -o build/web_user
-New-Item -ItemType Directory -Force public_html
-Copy-Item build/web_user/* public_html -Recurse -Force
+flutter build web --release -t lib/main_user.dart --dart-define-from-file=env.json -o build/web_user
+New-Item -ItemType Directory -Force public_html/web_user
+Copy-Item build/web_user/* public_html/web_user -Recurse -Force
 ```
 
-Admin app (it lives in a subfolder, so it needs its own base path):
+Admin app:
 
 ```powershell
-flutter build web --release -t lib/main_admin.dart --dart-define-from-file=env.json --base-href /admin/ -o build/web_admin
-New-Item -ItemType Directory -Force public_html/admin
-Copy-Item build/web_admin/* public_html/admin -Recurse -Force
+flutter build web --release -t lib/main_admin.dart --dart-define-from-file=env.json -o build/web_admin
+New-Item -ItemType Directory -Force public_html/web_admin
+Copy-Item build/web_admin/* public_html/web_admin -Recurse -Force
 ```
 
 `API_BASE_URL` is baked in at build time from `env.json`, so check it points at your public API before building. The site must be served over HTTPS when the API is.
