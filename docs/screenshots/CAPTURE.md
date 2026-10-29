@@ -1,6 +1,6 @@
 # Screenshot capture checklist
 
-The README links to every file listed here by exact path, so name files exactly as shown. 64 images in total.
+The README links to every file listed here by exact path, so name files exactly as shown. 23 images in total.
 
 ## Before you start
 
@@ -32,7 +32,6 @@ The README links to every file listed here by exact path, so name files exactly 
 | Status bar | On the emulator, turn on System UI demo mode (or just keep the clock and battery plausible). |
 
 Notes:
-- The Camera option on `19_director_note_upload` only appears on Android, so take that one on the emulator.
 - At 834 px the app is still below its 840 px breakpoint, so the tablet shot shows the slide-out menu, not the permanent side panel. That is expected.
 - Breakpoints are in `frontend/lib/core/widgets/responsive.dart`: 840 px for the permanent side menu, 900 px for the login brand panel.
 
@@ -54,137 +53,68 @@ docs/screenshots/
 ├── hero-dark.png
 ├── CAPTURE.md
 ├── admin/
-│   ├── mobile/light/  mobile/dark/
-│   └── web/light/     web/dark/
+│   ├── mobile/light/
+│   └── web/light/
 └── user/
     ├── mobile/light/  mobile/dark/
     ├── tablet/light/
-    └── web/light/     web/dark/
+    └── web/light/
 ```
 
-Files are numbered in user-flow order: `01` to `09` sign-in, `10` to `19` Director, `20` to `29` Teacher, `30` to `39` Student, `40` to `49` Chat, `50` to `59` side menu and profile, `60` to `69` Admin. The same screen keeps the same file name in every folder.
+Files are numbered in user-flow order: `01` to `09` sign-in, `10` to `19` Director, `20` to `29` Teacher, `30` to `39` Student, `40` to `49` Chat, `50` to `59` side menu and profile, `60` to `69` Admin. The same screen keeps the same file name in every folder. Only the files in the checklist are linked from the README.
 
 ## Checklist
 
-### `user/mobile/light/` (29)
+### Must-have (11)
+
+These show without expanding anything, so the README looks broken without them. They need only 4 screens: dashboard, classes, notes and group chat. Take each on a phone in light and dark, the dashboard on a tablet and a desktop, then build the two hero images.
+
+| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
+| --- | --- | --- | --- | --- | --- | --- |
+| [ ] | `docs/screenshots/hero-light.png` | both | n/a | Composite, see [Hero images](#hero-images) | About 2400×1350 | Light |
+| [ ] | `docs/screenshots/hero-dark.png` | both | n/a | Same composite from the dark captures | About 2400×1350 | Dark |
+| [ ] | `docs/screenshots/user/mobile/light/10_director_dashboard.png` | user | Director | First screen after login. Tiles: Classes, Teachers, Students, Chat. | Mobile | Light |
+| [ ] | `docs/screenshots/user/mobile/light/11_director_classes.png` | user | Director | Dashboard, then Classes. | Mobile | Light |
+| [ ] | `docs/screenshots/user/mobile/light/18_director_notes.png` | user | Director | Classes, a class, Subjects, then one subject. Seed a mix of image, PDF, video and PPT notes so the grid shows different file icons. | Mobile | Light |
+| [ ] | `docs/screenshots/user/mobile/light/44_group_chat.png` | user | Director | Chat, Classes tab, open a class. Pre-send 6 to 8 messages from at least two accounts. | Mobile | Light |
+| [ ] | `docs/screenshots/user/mobile/dark/10_director_dashboard.png` | user | Director | First screen after login. Tiles: Classes, Teachers, Students, Chat. | Mobile | Dark |
+| [ ] | `docs/screenshots/user/mobile/dark/18_director_notes.png` | user | Director | Classes, a class, Subjects, then one subject. Seed a mix of image, PDF, video and PPT notes so the grid shows different file icons. | Mobile | Dark |
+| [ ] | `docs/screenshots/user/mobile/dark/44_group_chat.png` | user | Director | Chat, Classes tab, open a class. Pre-send 6 to 8 messages from at least two accounts. | Mobile | Dark |
+| [ ] | `docs/screenshots/user/tablet/light/10_director_dashboard.png` | user | Director | First screen after login. Tiles: Classes, Teachers, Students, Chat. | Tablet 834×1194 | Light |
+| [ ] | `docs/screenshots/user/web/light/10_director_dashboard.png` | user | Director | First screen after login. Tiles: Classes, Teachers, Students, Chat. | Desktop 1440×900 | Light |
+
+### Recommended (12)
+
+These fill the collapsed gallery: every role, both apps, one or two screens each.
 
 | Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
 | --- | --- | --- | --- | --- | --- | --- |
 | [ ] | `docs/screenshots/user/mobile/light/01_login.png` | user | Signed out | Open the app signed out (log out first). | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/02_forgot_password.png` | user | Signed out | Login, then "Forgot Password ?". | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/10_director_dashboard.png` | user | Director | First screen after login. Tiles: Classes, Teachers, Students, Chat. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/11_director_classes.png` | user | Director | Dashboard, then Classes. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/12_director_class_subjects.png` | user | Director | Classes, tap a class, then Subjects in the bottom sheet. | Mobile | Light |
 | [ ] | `docs/screenshots/user/mobile/light/13_director_class_students.png` | user | Director | Classes, tap a class, then Students in the bottom sheet. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/14_director_add_class.png` | user | Director | Classes, then the + button. Show the Class Teacher dropdown open or filled. | Mobile | Light |
 | [ ] | `docs/screenshots/user/mobile/light/15_director_teachers.png` | user | Director | Dashboard, then Teachers. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/16_director_add_teacher.png` | user | Director | Teachers, then the + button. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/17_director_add_student.png` | user | Director | Dashboard, Students, then the + button. Show the Class dropdown filled. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/18_director_notes.png` | user | Director | Classes, a class, Subjects, then one subject. Seed a mix of image, PDF, video and PPT notes so the grid shows different file icons. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/19_director_note_upload.png` | user | Director | Inside a subject's notes, tap +. The Camera option only appears on Android, so use the emulator for this one. | Mobile | Light |
 | [ ] | `docs/screenshots/user/mobile/light/20_teacher_dashboard.png` | user | Teacher | First screen after login. Tiles: Classes, Subjects, Students, Chat. | Mobile | Light |
 | [ ] | `docs/screenshots/user/mobile/light/21_teacher_classes.png` | user | Teacher | Dashboard, then Classes. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/22_teacher_subjects.png` | user | Teacher | Dashboard, then Subjects. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/23_teacher_students.png` | user | Teacher | Dashboard, then Students. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/24_teacher_add_student.png` | user | Teacher | Students, then the + button. | Mobile | Light |
 | [ ] | `docs/screenshots/user/mobile/light/30_student_dashboard.png` | user | Student | First screen after login. Tiles: Subjects, Chat. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/31_student_subjects.png` | user | Student | Dashboard, then Subjects. | Mobile | Light |
 | [ ] | `docs/screenshots/user/mobile/light/32_student_notes.png` | user | Student | Subjects, then one subject (same notes as 18). | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/40_chat_classes.png` | user | Director | Dashboard, Chat, Classes tab. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/41_chat_subjects.png` | user | Director | Dashboard, Chat, Subjects tab. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/42_chat_teachers.png` | user | Director | Dashboard, Chat, Teachers tab. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/43_chat_students.png` | user | Director | Dashboard, Chat, Students tab. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/44_group_chat.png` | user | Director | Chat, Classes tab, open a class. Pre-send 6 to 8 messages from at least two accounts. | Mobile | Light |
 | [ ] | `docs/screenshots/user/mobile/light/45_direct_chat.png` | user | Director | Chat, Teachers tab, open a teacher. Pre-send a short conversation. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/50_drawer.png` | user | Director | Dashboard, then the menu button. On desktop it is the permanent left panel. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/51_profile.png` | user | Director | Side menu, then Profile. | Mobile | Light |
-| [ ] | `docs/screenshots/user/mobile/light/52_change_password.png` | user | Director | Profile, then Change password. Leave the fields empty. | Mobile | Light |
-
-### `user/mobile/dark/` (9)
-
-| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
-| --- | --- | --- | --- | --- | --- | --- |
-| [ ] | `docs/screenshots/user/mobile/dark/01_login.png` | user | Signed out | Open the app signed out (log out first). | Mobile | Dark |
-| [ ] | `docs/screenshots/user/mobile/dark/10_director_dashboard.png` | user | Director | First screen after login. Tiles: Classes, Teachers, Students, Chat. | Mobile | Dark |
-| [ ] | `docs/screenshots/user/mobile/dark/11_director_classes.png` | user | Director | Dashboard, then Classes. | Mobile | Dark |
-| [ ] | `docs/screenshots/user/mobile/dark/14_director_add_class.png` | user | Director | Classes, then the + button. Show the Class Teacher dropdown open or filled. | Mobile | Dark |
-| [ ] | `docs/screenshots/user/mobile/dark/18_director_notes.png` | user | Director | Classes, a class, Subjects, then one subject. Seed a mix of image, PDF, video and PPT notes so the grid shows different file icons. | Mobile | Dark |
-| [ ] | `docs/screenshots/user/mobile/dark/30_student_dashboard.png` | user | Student | First screen after login. Tiles: Subjects, Chat. | Mobile | Dark |
-| [ ] | `docs/screenshots/user/mobile/dark/40_chat_classes.png` | user | Director | Dashboard, Chat, Classes tab. | Mobile | Dark |
-| [ ] | `docs/screenshots/user/mobile/dark/44_group_chat.png` | user | Director | Chat, Classes tab, open a class. Pre-send 6 to 8 messages from at least two accounts. | Mobile | Dark |
-| [ ] | `docs/screenshots/user/mobile/dark/50_drawer.png` | user | Director | Dashboard, then the menu button. On desktop it is the permanent left panel. | Mobile | Dark |
-
-### `user/tablet/light/` (1)
-
-| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
-| --- | --- | --- | --- | --- | --- | --- |
-| [ ] | `docs/screenshots/user/tablet/light/10_director_dashboard.png` | user | Director | First screen after login. Tiles: Classes, Teachers, Students, Chat. | Tablet 834×1194 | Light |
-
-### `user/web/light/` (5)
-
-| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
-| --- | --- | --- | --- | --- | --- | --- |
-| [ ] | `docs/screenshots/user/web/light/01_login.png` | user | Signed out | Open the app signed out (log out first). | Desktop 1440×900 | Light |
-| [ ] | `docs/screenshots/user/web/light/10_director_dashboard.png` | user | Director | First screen after login. Tiles: Classes, Teachers, Students, Chat. | Desktop 1440×900 | Light |
-| [ ] | `docs/screenshots/user/web/light/11_director_classes.png` | user | Director | Dashboard, then Classes. | Desktop 1440×900 | Light |
-| [ ] | `docs/screenshots/user/web/light/18_director_notes.png` | user | Director | Classes, a class, Subjects, then one subject. Seed a mix of image, PDF, video and PPT notes so the grid shows different file icons. | Desktop 1440×900 | Light |
-| [ ] | `docs/screenshots/user/web/light/44_group_chat.png` | user | Director | Chat, Classes tab, open a class. Pre-send 6 to 8 messages from at least two accounts. | Desktop 1440×900 | Light |
-
-### `user/web/dark/` (5)
-
-| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
-| --- | --- | --- | --- | --- | --- | --- |
-| [ ] | `docs/screenshots/user/web/dark/01_login.png` | user | Signed out | Open the app signed out (log out first). | Desktop 1440×900 | Dark |
-| [ ] | `docs/screenshots/user/web/dark/10_director_dashboard.png` | user | Director | First screen after login. Tiles: Classes, Teachers, Students, Chat. | Desktop 1440×900 | Dark |
-| [ ] | `docs/screenshots/user/web/dark/11_director_classes.png` | user | Director | Dashboard, then Classes. | Desktop 1440×900 | Dark |
-| [ ] | `docs/screenshots/user/web/dark/18_director_notes.png` | user | Director | Classes, a class, Subjects, then one subject. Seed a mix of image, PDF, video and PPT notes so the grid shows different file icons. | Desktop 1440×900 | Dark |
-| [ ] | `docs/screenshots/user/web/dark/44_group_chat.png` | user | Director | Chat, Classes tab, open a class. Pre-send 6 to 8 messages from at least two accounts. | Desktop 1440×900 | Dark |
-
-### `admin/mobile/light/` (4)
-
-| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
-| --- | --- | --- | --- | --- | --- | --- |
 | [ ] | `docs/screenshots/admin/mobile/light/60_admin_login.png` | admin | Signed out | Open the admin app signed out. | Mobile | Light |
 | [ ] | `docs/screenshots/admin/mobile/light/61_institutes.png` | admin | Admin | Sign in. Seed 3 or 4 institutes first. | Mobile | Light |
 | [ ] | `docs/screenshots/admin/mobile/light/62_add_institute.png` | admin | Admin | Institutes, then the + button. | Mobile | Light |
-| [ ] | `docs/screenshots/admin/mobile/light/63_director_credentials.png` | admin | Admin | Submit Add Institute with valid demo data; the dialog appears on success. | Mobile | Light |
-
-### `admin/mobile/dark/` (3)
-
-| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
-| --- | --- | --- | --- | --- | --- | --- |
-| [ ] | `docs/screenshots/admin/mobile/dark/60_admin_login.png` | admin | Signed out | Open the admin app signed out. | Mobile | Dark |
-| [ ] | `docs/screenshots/admin/mobile/dark/61_institutes.png` | admin | Admin | Sign in. Seed 3 or 4 institutes first. | Mobile | Dark |
-| [ ] | `docs/screenshots/admin/mobile/dark/62_add_institute.png` | admin | Admin | Institutes, then the + button. | Mobile | Dark |
-
-### `admin/web/light/` (3)
-
-| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
-| --- | --- | --- | --- | --- | --- | --- |
-| [ ] | `docs/screenshots/admin/web/light/60_admin_login.png` | admin | Signed out | Open the admin app signed out. | Desktop 1440×900 | Light |
 | [ ] | `docs/screenshots/admin/web/light/61_institutes.png` | admin | Admin | Sign in. Seed 3 or 4 institutes first. | Desktop 1440×900 | Light |
-| [ ] | `docs/screenshots/admin/web/light/62_add_institute.png` | admin | Admin | Institutes, then the + button. | Desktop 1440×900 | Light |
-
-### `admin/web/dark/` (3)
-
-| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
-| --- | --- | --- | --- | --- | --- | --- |
-| [ ] | `docs/screenshots/admin/web/dark/60_admin_login.png` | admin | Signed out | Open the admin app signed out. | Desktop 1440×900 | Dark |
-| [ ] | `docs/screenshots/admin/web/dark/61_institutes.png` | admin | Admin | Sign in. Seed 3 or 4 institutes first. | Desktop 1440×900 | Dark |
-| [ ] | `docs/screenshots/admin/web/dark/62_add_institute.png` | admin | Admin | Institutes, then the + button. | Desktop 1440×900 | Dark |
 
 ## Hero images
 
 Compose each hero from existing captures, so take those first. Suggested layout (about 2400×1350, neutral background, soft shadow, device frames optional):
 
-- Desktop: `user/web/<theme>/10_director_dashboard.png`, large, centre-right.
-- Phones, overlapping on the left: `user/mobile/<theme>/10_director_dashboard.png` and `user/mobile/<theme>/44_group_chat.png`.
+- Desktop: the Director dashboard at 1440×900, large, centre-right. `hero-light.png` uses `user/web/light/10_director_dashboard.png`. `hero-dark.png` needs the same shot in dark theme; take it as source material only, since the README does not link a `web/dark` image.
+- Phones, overlapping on the left: `user/mobile/<theme>/10_director_dashboard.png` and `user/mobile/<theme>/44_group_chat.png` (both exist in light and dark).
 - `<theme>` is `light` for `hero-light.png` and `dark` for `hero-dark.png`.
 
-| Done | File path | App flavor | Log in as | Screen / how to get there | Device size | Theme |
-| --- | --- | --- | --- | --- | --- | --- |
-| [ ] | `docs/screenshots/hero-light.png` | both | n/a | Composite, see [Hero images](#hero-images) | Any (about 2400×1350) | Light |
-| [ ] | `docs/screenshots/hero-dark.png` | both | n/a | Same composite built from the dark captures | Any (about 2400×1350) | Dark |
+## Skipped on purpose
+
+Not linked from the README, so do not capture them unless you want extras: dark and web copies of screens already covered, the form screens (add class, teacher, student, subject), forgot password, change password, side menu and profile, and the per-tab chat lists.
+
+If you ever capture `63_director_credentials.png`, use a fake institute. The dialog shows the new director's User ID; the password itself is only e-mailed, but the User ID still identifies the institute.
 
 ## Keep the repo small
 

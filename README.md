@@ -148,11 +148,6 @@ The same screen at three widths. The side menu becomes a permanent panel from 84
     <td align="center"><img src="docs/screenshots/admin/mobile/light/61_institutes.png" alt="Admin app: Institutes" width="230"><br><sub>Institutes</sub></td>
     <td align="center"><img src="docs/screenshots/admin/mobile/light/62_add_institute.png" alt="Admin app: Add an institute" width="230"><br><sub>Add an institute</sub></td>
   </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/admin/mobile/light/63_director_credentials.png" alt="Admin app: Director credentials dialog" width="230"><br><sub>Director credentials dialog</sub></td>
-    <td></td>
-    <td></td>
-  </tr>
 </table>
 
 </details>
@@ -164,28 +159,13 @@ The same screen at three widths. The side menu becomes a permanent panel from 84
 <table>
   <tr>
     <td align="center"><img src="docs/screenshots/user/mobile/light/01_login.png" alt="User app: Login" width="230"><br><sub>Login</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/02_forgot_password.png" alt="User app: Forgot password" width="230"><br><sub>Forgot password</sub></td>
     <td align="center"><img src="docs/screenshots/user/mobile/light/10_director_dashboard.png" alt="User app: Director dashboard" width="230"><br><sub>Director dashboard</sub></td>
-  </tr>
-  <tr>
     <td align="center"><img src="docs/screenshots/user/mobile/light/11_director_classes.png" alt="User app: Classes" width="230"><br><sub>Classes</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/12_director_class_subjects.png" alt="User app: Subjects of a class" width="230"><br><sub>Subjects of a class</sub></td>
+  </tr>
+  <tr>
     <td align="center"><img src="docs/screenshots/user/mobile/light/13_director_class_students.png" alt="User app: Students of a class" width="230"><br><sub>Students of a class</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/14_director_add_class.png" alt="User app: Create a class" width="230"><br><sub>Create a class</sub></td>
     <td align="center"><img src="docs/screenshots/user/mobile/light/15_director_teachers.png" alt="User app: Teachers" width="230"><br><sub>Teachers</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/16_director_add_teacher.png" alt="User app: Add a teacher" width="230"><br><sub>Add a teacher</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/17_director_add_student.png" alt="User app: Add a student" width="230"><br><sub>Add a student</sub></td>
     <td align="center"><img src="docs/screenshots/user/mobile/light/18_director_notes.png" alt="User app: Notes of a subject" width="230"><br><sub>Notes of a subject</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/19_director_note_upload.png" alt="User app: Attach a note" width="230"><br><sub>Attach a note</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/50_drawer.png" alt="User app: Side menu" width="230"><br><sub>Side menu</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/51_profile.png" alt="User app: Profile" width="230"><br><sub>Profile</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/52_change_password.png" alt="User app: Change password" width="230"><br><sub>Change password</sub></td>
   </tr>
 </table>
 
@@ -199,11 +179,6 @@ The same screen at three widths. The side menu becomes a permanent panel from 84
   <tr>
     <td align="center"><img src="docs/screenshots/user/mobile/light/20_teacher_dashboard.png" alt="User app: Teacher dashboard" width="230"><br><sub>Teacher dashboard</sub></td>
     <td align="center"><img src="docs/screenshots/user/mobile/light/21_teacher_classes.png" alt="User app: Own classes" width="230"><br><sub>Own classes</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/22_teacher_subjects.png" alt="User app: Own subjects" width="230"><br><sub>Own subjects</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/23_teacher_students.png" alt="User app: Own students" width="230"><br><sub>Own students</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/24_teacher_add_student.png" alt="User app: Add a student to own class" width="230"><br><sub>Add a student to own class</sub></td>
     <td></td>
   </tr>
 </table>
@@ -217,8 +192,8 @@ The same screen at three widths. The side menu becomes a permanent panel from 84
 <table>
   <tr>
     <td align="center"><img src="docs/screenshots/user/mobile/light/30_student_dashboard.png" alt="User app: Student dashboard" width="230"><br><sub>Student dashboard</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/31_student_subjects.png" alt="User app: Subjects of the class" width="230"><br><sub>Subjects of the class</sub></td>
     <td align="center"><img src="docs/screenshots/user/mobile/light/32_student_notes.png" alt="User app: Notes of a subject" width="230"><br><sub>Notes of a subject</sub></td>
+    <td></td>
   </tr>
 </table>
 
@@ -230,14 +205,9 @@ The same screen at three widths. The side menu becomes a permanent panel from 84
 
 <table>
   <tr>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/40_chat_classes.png" alt="User app: Chat: classes" width="230"><br><sub>Chat: classes</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/41_chat_subjects.png" alt="User app: Chat: subjects" width="230"><br><sub>Chat: subjects</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/42_chat_teachers.png" alt="User app: Chat: teachers" width="230"><br><sub>Chat: teachers</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/mobile/light/43_chat_students.png" alt="User app: Chat: students" width="230"><br><sub>Chat: students</sub></td>
     <td align="center"><img src="docs/screenshots/user/mobile/light/44_group_chat.png" alt="User app: Class group chat" width="230"><br><sub>Class group chat</sub></td>
     <td align="center"><img src="docs/screenshots/user/mobile/light/45_direct_chat.png" alt="User app: One-to-one chat" width="230"><br><sub>One-to-one chat</sub></td>
+    <td></td>
   </tr>
 </table>
 
@@ -249,27 +219,9 @@ The same screen at three widths. The side menu becomes a permanent panel from 84
 
 <table>
   <tr>
-    <td align="center"><img src="docs/screenshots/user/mobile/dark/01_login.png" alt="User app: Login, dark" width="230"><br><sub>Login (dark)</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/dark/10_director_dashboard.png" alt="User app: Director dashboard, dark" width="230"><br><sub>Director dashboard (dark)</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/dark/11_director_classes.png" alt="User app: Classes, dark" width="230"><br><sub>Classes (dark)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/mobile/dark/14_director_add_class.png" alt="User app: Create a class, dark" width="230"><br><sub>Create a class (dark)</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/dark/18_director_notes.png" alt="User app: Notes of a subject, dark" width="230"><br><sub>Notes of a subject (dark)</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/dark/30_student_dashboard.png" alt="User app: Student dashboard, dark" width="230"><br><sub>Student dashboard (dark)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/mobile/dark/40_chat_classes.png" alt="User app: Chat: classes, dark" width="230"><br><sub>Chat: classes (dark)</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/dark/44_group_chat.png" alt="User app: Class group chat, dark" width="230"><br><sub>Class group chat (dark)</sub></td>
-    <td align="center"><img src="docs/screenshots/user/mobile/dark/50_drawer.png" alt="User app: Side menu, dark" width="230"><br><sub>Side menu (dark)</sub></td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <td align="center"><img src="docs/screenshots/admin/mobile/dark/60_admin_login.png" alt="Admin app: Admin sign in, dark" width="230"><br><sub>Admin sign in (dark)</sub></td>
-    <td align="center"><img src="docs/screenshots/admin/mobile/dark/61_institutes.png" alt="Admin app: Institutes, dark" width="230"><br><sub>Institutes (dark)</sub></td>
-    <td align="center"><img src="docs/screenshots/admin/mobile/dark/62_add_institute.png" alt="Admin app: Add an institute, dark" width="230"><br><sub>Add an institute (dark)</sub></td>
+    <td align="center"><img src="docs/screenshots/user/mobile/dark/10_director_dashboard.png" alt="User app: Director dashboard, dark theme" width="230"><br><sub>Director dashboard (dark)</sub></td>
+    <td align="center"><img src="docs/screenshots/user/mobile/dark/18_director_notes.png" alt="User app: Notes of a subject, dark theme" width="230"><br><sub>Notes of a subject (dark)</sub></td>
+    <td align="center"><img src="docs/screenshots/user/mobile/dark/44_group_chat.png" alt="User app: Class group chat, dark theme" width="230"><br><sub>Class group chat (dark)</sub></td>
   </tr>
 </table>
 
@@ -279,71 +231,19 @@ The same screen at three widths. The side menu becomes a permanent panel from 84
 <summary><b>🖥️ Web & desktop</b></summary>
 <br>
 
-**User app, light**
+**User app**
 
 <table>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/web/light/01_login.png" alt="User app: Login, light theme, desktop" width="100%"><br><sub>Login (light)</sub></td>
-  </tr>
   <tr>
     <td align="center"><img src="docs/screenshots/user/web/light/10_director_dashboard.png" alt="User app: Director dashboard, light theme, desktop" width="100%"><br><sub>Director dashboard (light)</sub></td>
   </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/web/light/11_director_classes.png" alt="User app: Classes, light theme, desktop" width="100%"><br><sub>Classes (light)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/web/light/18_director_notes.png" alt="User app: Notes of a subject, light theme, desktop" width="100%"><br><sub>Notes of a subject (light)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/web/light/44_group_chat.png" alt="User app: Class group chat, light theme, desktop" width="100%"><br><sub>Class group chat (light)</sub></td>
-  </tr>
 </table>
 
-**User app, dark**
+**Admin app**
 
 <table>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/web/dark/01_login.png" alt="User app: Login, dark theme, desktop" width="100%"><br><sub>Login (dark)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/web/dark/10_director_dashboard.png" alt="User app: Director dashboard, dark theme, desktop" width="100%"><br><sub>Director dashboard (dark)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/web/dark/11_director_classes.png" alt="User app: Classes, dark theme, desktop" width="100%"><br><sub>Classes (dark)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/web/dark/18_director_notes.png" alt="User app: Notes of a subject, dark theme, desktop" width="100%"><br><sub>Notes of a subject (dark)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/user/web/dark/44_group_chat.png" alt="User app: Class group chat, dark theme, desktop" width="100%"><br><sub>Class group chat (dark)</sub></td>
-  </tr>
-</table>
-
-**Admin app, light**
-
-<table>
-  <tr>
-    <td align="center"><img src="docs/screenshots/admin/web/light/60_admin_login.png" alt="Admin app: Admin sign in, light theme, desktop" width="100%"><br><sub>Admin sign in (light)</sub></td>
-  </tr>
   <tr>
     <td align="center"><img src="docs/screenshots/admin/web/light/61_institutes.png" alt="Admin app: Institutes, light theme, desktop" width="100%"><br><sub>Institutes (light)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/admin/web/light/62_add_institute.png" alt="Admin app: Add an institute, light theme, desktop" width="100%"><br><sub>Add an institute (light)</sub></td>
-  </tr>
-</table>
-
-**Admin app, dark**
-
-<table>
-  <tr>
-    <td align="center"><img src="docs/screenshots/admin/web/dark/60_admin_login.png" alt="Admin app: Admin sign in, dark theme, desktop" width="100%"><br><sub>Admin sign in (dark)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/admin/web/dark/61_institutes.png" alt="Admin app: Institutes, dark theme, desktop" width="100%"><br><sub>Institutes (dark)</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/admin/web/dark/62_add_institute.png" alt="Admin app: Add an institute, dark theme, desktop" width="100%"><br><sub>Add an institute (dark)</sub></td>
   </tr>
 </table>
 
