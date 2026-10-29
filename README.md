@@ -18,6 +18,17 @@ A multi-institute college and school management system. One Flutter codebase bui
 
 The two Android apps have different application IDs (`com.asyncit.evidyalaya` and `com.asyncit.evidyalaya.admin`), so they install side by side. On the web they are two separate sites.
 
+## Live apps and downloads
+
+| What | Link |
+| --- | --- |
+| **User app** (web) | https://e-vidyalaya.onrender.com/ |
+| **Admin app** (web) | https://e-vidyalaya-admin.onrender.com |
+| **API** | https://evidyalaya.onrender.com (health check: https://evidyalaya.onrender.com/health) |
+| **Android APKs** (user and admin) | [Latest release](https://github.com/rks369/evidyalaya/releases/latest) |
+
+The apps run on Render's free tier, so the first request after a quiet period can take up to a minute while the API wakes up.
+
 ## How it works
 
 1. A **platform admin** is created once from the command line. The admin signs in to the Admin app and adds an **institute**.
