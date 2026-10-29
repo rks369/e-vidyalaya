@@ -62,7 +62,7 @@ flutter run -d linux   -t lib/main_user.dart  --dart-define-from-file=env.json
 
 ### VS Code
 
-**Run and Debug** has ready-made configurations: `Backend (API)`, `User (Web)` / `Admin (Web)` (Chrome on ports 5000 / 5001), the Android/iOS flavors, and the Windows/Linux builds. `Backend + User (Web)` and `Backend + Admin (Web)` start both together. The web and desktop configs read `API_BASE_URL` from `env.json`. Stop any `npm run dev` already using port 3000 first.
+**Run and Debug** has five configurations: `Backend (API)`, `User (debug)`, `User (release)`, `Admin (debug)` and `Admin (release)`. The app configurations use the Android flavors and read `API_BASE_URL` from `env.json`. Stop any `npm run dev` already using port 3000 before starting `Backend (API)`. For web or desktop, use the `flutter run` commands in the Run section above.
 
 ## Build
 
