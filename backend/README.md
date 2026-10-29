@@ -1,6 +1,6 @@
 # eVidyalaya backend
 
-The Node.js (Express) API behind both apps. It owns the PostgreSQL database, sends email and runs the live chat. Back to the [project overview](../README.md).
+The Node.js (Express) API behind both apps. It owns the PostgreSQL database, sends e-mail and runs the live chat. Back to the [project overview](../README.md).
 
 Requires Node.js 20 or newer and a PostgreSQL database.
 
@@ -25,7 +25,7 @@ npm run dev            # starts the API with auto-restart on http://localhost:30
 
 ## Configuration
 
-All settings are environment variables (`.env` locally, the dashboard on Render). `.env.example` lists them.
+All settings are environment variables (a `.env` file locally, the hosting dashboard in production). `.env.example` lists them. The server refuses to start if a required variable is missing.
 
 | Variable | Required | Default | Meaning |
 | --- | --- | --- | --- |
@@ -34,17 +34,17 @@ All settings are environment variables (`.env` locally, the dashboard on Render)
 | `DB_SSL` | no | `true` | Set to `false` for a local database without SSL |
 | `JWT_SECRET` | yes | | Signs every login token. Use at least 32 random characters, for example `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"`. Never use a placeholder. |
 | `PORT` | no | `3000` | |
-| `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` | for email | | Leave `SMTP_HOST` empty to skip sending email |
+| `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` | for e-mail | | Leave `SMTP_HOST` empty to skip sending e-mail |
 | `SMTP_PORT` | no | `587` | Port 587 uses STARTTLS; port 465 needs `SMTP_SECURE=true` |
 | `SMTP_SECURE` | no | `false` | |
-| `MAIL_FROM`, `MAIL_FROM_NAME` | for email | `E-Vidyalaya` (name) | Sender address and name |
+| `MAIL_FROM`, `MAIL_FROM_NAME` | for e-mail | `E-Vidyalaya` (name) | Sender address and name. The address must be one your SMTP provider lets you send from. |
 | `UPLOAD_DIR` | no | `backend/public/uploads` | Where attached files are stored |
 | `TEMP_DIR` | no | `backend/public/temp` | Where new uploads wait until they are attached |
 | `TEMP_MAX_AGE_HOURS` | no | `24` | Age after which `npm run clean-temp` deletes an unattached upload |
 | `MAX_UPLOAD_MB` | no | `50` | Largest allowed upload |
-| `PUBLIC_BASE_URL` | no | the request's host | Used to build file URLs |
+| `PUBLIC_BASE_URL` | no | the request's host | Used to build file URLs, for example `https://api.example.com` |
 
-The server refuses to start if a required variable is missing.
+Passwords for new institutes and users are sent only by e-mail and are never returned by the API, so SMTP must work before anyone but the admin can sign in. Reset codes are also delivered only by e-mail.
 
 ## How it is built
 
@@ -58,15 +58,16 @@ src/sockets/chat.js    live chat over Socket.IO
 src/util/              DBClient, config, migrations runner, mailer, passwords, reset codes, validation, errors, response
 migrations/core/       SQL for the shared platform schema
 migrations/tenant/     SQL applied to every institute schema
-scripts/               migrate and create-admin
+scripts/               migrate, create-admin, clean-temp
 ```
 
 - **Plain SQL, no ORM.** Database access is the `DBClient` class in `src/util/db.js` (plain `pg`). `DBClient.core` is the `platform` schema and `DBClient.tenant({ schema })` (or `req.db` inside a route) is one institute's schema; both offer `select`, `insert`, `update`, `query` and `transaction`. Table and column names are validated and values are always passed as parameters.
-- **One schema per institute.** Each institute gets a PostgreSQL schema named `inst_<id>_<code>` (for example `inst_1_jmit`); no query ever filters by institute. The institute `code` (2-30 letters or digits, given when the admin creates the institute) can never be changed, and Postgres generates the `schema_name` column from it.
+- **One schema per institute.** Each institute gets a PostgreSQL schema named `inst_<id>_<code>` (for example `inst_1_demo`); no query ever filters by institute. The institute `code` (2-30 letters or digits, given when the admin creates the institute) can never be changed, and Postgres generates the `schema_name` column from it.
 - **Migrations are plain SQL files.** Add the next-numbered file to `migrations/core/` or `migrations/tenant/` and run `npm run migrate`, which applies it to `platform` and every existing institute. New institutes get every migration automatically.
 - **Common response format.** Every response is `{ status, message?, data? }` through `sendResponse`, including errors (`status: false`).
 - **Every table** has `creation_ts` and `modify_ts` columns kept by triggers.
 - **Data rules inside an institute:** foreign keys (a class needs a real teacher, a subject a real class, a note a real subject, a message a real sender) and `designation` is a database enum of `DIRECTOR`, `TEACHER` and `STUDENT`. The same uppercase values are returned by the API and carried in the login token as `role`; the code refers to them through the `Role` class in `src/util/constants.js`.
+- **Profile pictures** are stored as a URL and default to an empty string. The app shows the person's initials when there is no picture.
 
 ## Endpoints
 
@@ -87,7 +88,7 @@ Send the login token as `Authorization: Bearer <token>`. Errors use `400` (inval
 | `POST /auth/logout` | signed in | Acknowledges logout (the app discards its token) |
 | `GET /auth/me` | signed in | Current profile |
 | `POST /auth/change-password` | signed in | `currentPassword`, `newPassword` |
-| `POST /auth/forgot-password` | anyone | Emails a one-time reset code |
+| `POST /auth/forgot-password` | anyone | E-mails a one-time reset code |
 | `POST /auth/reset-password` | anyone | `username`, `code`, `newPassword` |
 | `GET /teachers`, `POST /teachers` | director | List / add teachers |
 | `GET /students` (`?classId=`), `POST /students` | director (add: director or teacher) | List / add students |
@@ -100,17 +101,19 @@ Send the login token as `Authorization: Bearer <token>`. Errors use `400` (inval
 | `GET /chats/:kind/:id/messages` (`?after=`) | chat members | Message history |
 | `POST /uploads` | director, teacher | Upload a file (multipart field `file`) |
 
-"Members of the class" means a director, the class teacher, a teacher of one of its subjects, or a student enrolled in the class.
+"Members of the class" means a director, the class teacher, a teacher of one of its subjects, or a student enrolled in the class. A teacher can only add students to their own class and notes to their own subjects.
 
 **Administrators**
 
 | Method and path | Who | Purpose |
 | --- | --- | --- |
 | `POST /admin/login` | anyone | `username`, `password`; returns `{ token, admin }` |
-| `POST /admin/forgot-password`, `POST /admin/reset-password` | anyone | Emailed one-time code, then the new password |
+| `POST /admin/forgot-password`, `POST /admin/reset-password` | anyone | E-mailed one-time code, then the new password |
 | `GET /admin/me` | admin | Current admin |
 | `POST /admin/change-password` | admin | Change password |
 | `GET /admin/institutes`, `POST /admin/institutes` | admin | List institutes / create one (needs `code`, `name`, `domain`, `address`, `mobile`, `email`, optional `logo`, which must be an http(s) URL) and its director account |
+
+There are no update or delete routes yet: the API only lists and adds.
 
 ## Administrators
 
@@ -120,16 +123,17 @@ Admin accounts live in the `platform.admin` table. They can only be created from
 npm run create-admin
 ```
 
-It asks for a username, an email, and the password twice (the password is not shown). Any of them can be given up front as `npm run create-admin -- <username> <email> <password> <confirmation>`, and the script only asks for what is missing; a password typed on the command line stays in your shell history. Usernames are 3-64 lowercase letters, digits, dots, dashes or underscores. The email must be unique, is stored in lower case and is where reset codes go. Passwords need at least 8 characters. The script says so if the username or email is taken or `npm run migrate` has not been run.
+It asks for a username, an e-mail, and the password twice (the password is not shown). Any of them can be given up front as `npm run create-admin -- <username> <email> <password> <confirmation>`, and the script only asks for what is missing; a password typed on the command line stays in your shell history. Usernames are 3-64 lowercase letters, digits, dots, dashes or underscores. The e-mail must be unique, is stored in lower case and is where reset codes go. Passwords need at least 8 characters. The script says so if the username or e-mail is taken or `npm run migrate` has not been run.
 
-Admin tokens last 12 hours, are rejected by every institute route and by the chat socket (and institute tokens are rejected by the admin routes), and stop working as soon as the admin's row is deleted (changing the password does not end other sessions; they expire after 12 hours). There is no shared admin key.
+Admin tokens last 12 hours, are rejected by every institute route and by the chat socket (and institute tokens are rejected by the admin routes), and stop working as soon as the admin's row is deleted. Changing a password does not end other sessions; they expire after 12 hours. There is no shared admin key.
 
 ## Passwords and sign-in
 
 - Passwords are stored as per-user salted `scrypt` hashes. There is no password secret to configure.
-- **Forgotten password** (institute users and admins work the same way): `forgot-password` emails an 8-character one-time code and changes nothing yet. The answer is identical whether or not the account exists, so nobody can probe for usernames or lock someone out. `reset-password` then sets the new password. The code works once (even if two requests use it at the same moment), expires after 15 minutes, and allows 5 tries in total; asking for a new code starts over.
+- New institutes and users get a generated password that is e-mailed, never shown by the API. The director's User ID is `director@<domain>.evidalaya.in`.
+- **Forgotten password** (institute users and admins work the same way): `forgot-password` e-mails an 8-character one-time code and changes nothing yet. The answer is identical whether or not the account exists, so nobody can probe for usernames or lock someone out. `reset-password` then sets the new password. The code works once (even if two requests use it at the same moment), expires after 15 minutes, and allows 5 tries in total; asking for a new code starts over.
 - New passwords need at least 8 characters.
-- For admins, changing or resetting a password signs out every earlier admin token. Institute-user tokens last 30 days and stay valid until they expire.
+- Institute-user tokens last 30 days.
 
 ## Rate limits
 
@@ -140,14 +144,16 @@ The API answers `429` with a `Retry-After` header when a client tries a sensitiv
 | Sign in | 10 tries per 15 minutes for each IP address and username |
 | Forgot password | 3 per 15 minutes for each IP address and username, and 5 per hour for each username |
 | Reset password | 10 per 15 minutes for each IP address and username |
-| All of the above together | 3000 requests per 15 minutes per IP address (high enough for a whole school behind one address) |
+| All of the above together | 3000 requests per 15 minutes per IP address (high enough for a whole institute behind one address) |
 | Chat messages | 20 per 10 seconds per user |
 
-The counters live in memory, so they reset when the server restarts and are not shared between several server instances. The numbers are in `src/util/config.js`. The API trusts one proxy hop for the client address, which is right behind Render; exposed directly without a proxy, a client could fake its address to dodge the per-IP limits.
+The counters live in memory, so they reset when the server restarts and are not shared between several server instances. The numbers are in `src/util/config.js`. The API trusts one proxy hop for the client address, which is right behind a single reverse proxy or host load balancer; exposed directly without a proxy, a client could fake its address to dodge the per-IP limits.
 
 ## Uploads
 
-Files (images, video, audio, PDF, Office documents) are sent to `POST /uploads` and first stored in a private temp folder, `public/temp/<instituteId>/` (`TEMP_DIR`), which is not served. The response's `url` is only a handle for attaching the file: when `POST /notes` receives it, the file is moved to `public/uploads/<instituteId>/` (`UPLOAD_DIR`) and the note stores the path `/assets/<instituteId>/<file>`; the server URL is added when notes are listed, so only the host changes if storage moves. A file that is never attached stays in temp until `npm run clean-temp` deletes everything older than `TEMP_MAX_AGE_HOURS` (default 24); schedule it daily (cron, or a Render cron job). Only safe types are accepted; HTML, SVG and scripts are refused. File names are random, so URLs cannot be guessed, but anyone with a URL can read the file. CORS is open so the web build can call the API.
+Files are sent to `POST /uploads` and first stored in a private temp folder, `public/temp/<instituteId>/` (`TEMP_DIR`), which is not served. The response's `url` is only a handle for attaching the file: when `POST /notes` receives it, the file is moved to `public/uploads/<instituteId>/` (`UPLOAD_DIR`) and the note stores the path `/assets/<instituteId>/<file>`; the server URL is added when notes are listed, so only the host changes if storage moves. A file that is never attached stays in temp until `npm run clean-temp` deletes everything older than `TEMP_MAX_AGE_HOURS` (default 24); schedule it daily (for example with cron).
+
+Accepted types: images (`.jpg .jpeg .png .gif .webp`), video (`.mp4 .mkv .mpg .mpeg .webm .mov`), audio (`.mp3 .m4a .aac .wav .wma .flac .ogg`) and documents (`.pdf .doc .docx .ppt .pptx .xls .xlsx .txt .zip`). HTML, SVG and scripts are refused. File names are random, so URLs cannot be guessed, but anyone with a URL can read the file. CORS is open so the web builds can call the API.
 
 ## Chat
 
@@ -163,16 +169,6 @@ The server pushes `chat:message` with `{ key, message }` to every member in the 
 
 ## Health and shutdown
 
-`/health` always answers while the process runs, and `/ready` also needs the database, so a database outage does not make Render restart the service (`render.yaml` uses `/health`). Point a load balancer or a deploy gate at `/ready`.
+`/health` always answers while the process runs, and `/ready` also needs the database, so a database outage does not make a host restart the service when it health-checks `/health`. Point a load balancer or a deploy gate at `/ready`.
 
 On SIGTERM or Ctrl+C the server stops taking new connections, answers `/ready` with `503`, lets open requests finish (up to 10 seconds), closes the chat sockets and the database pool, then exits.
-
-## Deployment
-
-Deploy on Render with `render.yaml` (free web service; it sleeps when idle, so the first request after a pause takes up to a minute) against a PostgreSQL database. Run `npm run migrate` and `npm run create-admin` against that database before first use.
-
-- Render's free disk is ephemeral, so uploaded files are lost on redeploy or restart. Move them to object storage (S3/R2) before relying on them.
-- Render's free tier blocks outgoing SMTP ports (25, 465 and 587), so email only sends from a paid Render plan or another host; on the free tier the mailer gives up after about 10 seconds. Passwords for new institutes and users are only ever sent by email (never returned by the API), so until email works new accounts cannot sign in and forgot-password cannot deliver its reset code.
-- `JWT_SECRET` must be a long random value (Render can generate one).
-
-For a local API on an Android emulator the app uses `http://10.0.2.2:3000`.

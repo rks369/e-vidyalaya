@@ -12,52 +12,6 @@
       "skipFiles": ["<node_internals>/**"]
     },
     {
-      "name": "Backend tests",
-      "type": "node",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/backend",
-      "program": "${workspaceFolder}/backend/test/api.test.js",
-      "runtimeArgs": ["--test"],
-      "console": "integratedTerminal",
-      "skipFiles": ["<node_internals>/**"]
-    },
-    {
-      "name": "User (Web)",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/frontend",
-      "type": "dart",
-      "deviceId": "chrome",
-      "program": "lib/main_user.dart",
-      "args": [
-        "--web-port=5000",
-        "--dart-define-from-file=env.json"
-      ]
-    },
-    {
-      "name": "Admin (Web)",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/frontend",
-      "type": "dart",
-      "deviceId": "chrome",
-      "program": "lib/main_admin.dart",
-      "args": [
-        "--web-port=5001",
-        "--dart-define-from-file=env.json"
-      ]
-    },
-    {
-      "name": "Admin (debug)",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/frontend",
-      "type": "dart",
-      "program": "lib/main_admin.dart",
-      "args": [
-        "--flavor",
-        "admin",
-        "--dart-define-from-file=env.json"
-      ]
-    },
-    {
       "name": "User (debug)",
       "request": "launch",
       "cwd": "${workspaceFolder}/frontend",
@@ -66,19 +20,6 @@
       "args": [
         "--flavor",
         "user",
-        "--dart-define-from-file=env.json"
-      ]
-    },
-    {
-      "name": "Admin (release)",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/frontend",
-      "type": "dart",
-      "flutterMode": "release",
-      "program": "lib/main_admin.dart",
-      "args": [
-        "--flavor",
-        "admin",
         "--dart-define-from-file=env.json"
       ]
     },
@@ -96,36 +37,29 @@
       ]
     },
     {
-      "name": "Admin (Windows / Linux, no flavor)",
+      "name": "Admin (debug)",
       "request": "launch",
       "cwd": "${workspaceFolder}/frontend",
       "type": "dart",
       "program": "lib/main_admin.dart",
       "args": [
+        "--flavor",
+        "admin",
         "--dart-define-from-file=env.json"
       ]
     },
     {
-      "name": "User (Windows / Linux, no flavor)",
+      "name": "Admin (release)",
       "request": "launch",
       "cwd": "${workspaceFolder}/frontend",
       "type": "dart",
-      "program": "lib/main_user.dart",
+      "flutterMode": "release",
+      "program": "lib/main_admin.dart",
       "args": [
+        "--flavor",
+        "admin",
         "--dart-define-from-file=env.json"
       ]
-    }
-  ],
-  "compounds": [
-    {
-      "name": "Backend + User (Web)",
-      "configurations": ["Backend (API)", "User (Web)"],
-      "stopAll": true
-    },
-    {
-      "name": "Backend + Admin (Web)",
-      "configurations": ["Backend (API)", "Admin (Web)"],
-      "stopAll": true
     }
   ]
 }
