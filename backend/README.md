@@ -25,7 +25,7 @@ npm run dev            # starts the API with auto-restart on http://localhost:30
 
 ## Configuration
 
-All settings are environment variables (`.env` locally, the dashboard on Render). `.env.example` lists them. The server refuses to start if a required variable is missing.
+All settings are environment variables (a `.env` file locally, the hosting dashboard in production). `.env.example` lists them. The server refuses to start if a required variable is missing.
 
 | Variable | Required | Default | Meaning |
 | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ All settings are environment variables (`.env` locally, the dashboard on Render)
 | `TEMP_DIR` | no | `backend/public/temp` | Where new uploads wait until they are attached |
 | `TEMP_MAX_AGE_HOURS` | no | `24` | Age after which `npm run clean-temp` deletes an unattached upload |
 | `MAX_UPLOAD_MB` | no | `50` | Largest allowed upload |
-| `PUBLIC_BASE_URL` | no | the request's host | Used to build file URLs, for example `https://your-service.onrender.com` |
+| `PUBLIC_BASE_URL` | no | the request's host | Used to build file URLs, for example `https://api.example.com` |
 
 Passwords for new institutes and users are sent only by e-mail and are never returned by the API, so SMTP must work before anyone but the admin can sign in. Reset codes are also delivered only by e-mail.
 
@@ -147,11 +147,11 @@ The API answers `429` with a `Retry-After` header when a client tries a sensitiv
 | All of the above together | 3000 requests per 15 minutes per IP address (high enough for a whole institute behind one address) |
 | Chat messages | 20 per 10 seconds per user |
 
-The counters live in memory, so they reset when the server restarts and are not shared between several server instances. The numbers are in `src/util/config.js`. The API trusts one proxy hop for the client address, which is right behind Render; exposed directly without a proxy, a client could fake its address to dodge the per-IP limits.
+The counters live in memory, so they reset when the server restarts and are not shared between several server instances. The numbers are in `src/util/config.js`. The API trusts one proxy hop for the client address, which is right behind a single reverse proxy or host load balancer; exposed directly without a proxy, a client could fake its address to dodge the per-IP limits.
 
 ## Uploads
 
-Files are sent to `POST /uploads` and first stored in a private temp folder, `public/temp/<instituteId>/` (`TEMP_DIR`), which is not served. The response's `url` is only a handle for attaching the file: when `POST /notes` receives it, the file is moved to `public/uploads/<instituteId>/` (`UPLOAD_DIR`) and the note stores the path `/assets/<instituteId>/<file>`; the server URL is added when notes are listed, so only the host changes if storage moves. A file that is never attached stays in temp until `npm run clean-temp` deletes everything older than `TEMP_MAX_AGE_HOURS` (default 24); schedule it daily (cron, or a Render cron job).
+Files are sent to `POST /uploads` and first stored in a private temp folder, `public/temp/<instituteId>/` (`TEMP_DIR`), which is not served. The response's `url` is only a handle for attaching the file: when `POST /notes` receives it, the file is moved to `public/uploads/<instituteId>/` (`UPLOAD_DIR`) and the note stores the path `/assets/<instituteId>/<file>`; the server URL is added when notes are listed, so only the host changes if storage moves. A file that is never attached stays in temp until `npm run clean-temp` deletes everything older than `TEMP_MAX_AGE_HOURS` (default 24); schedule it daily (for example with cron).
 
 Accepted types: images (`.jpg .jpeg .png .gif .webp`), video (`.mp4 .mkv .mpg .mpeg .webm .mov`), audio (`.mp3 .m4a .aac .wav .wma .flac .ogg`) and documents (`.pdf .doc .docx .ppt .pptx .xls .xlsx .txt .zip`). HTML, SVG and scripts are refused. File names are random, so URLs cannot be guessed, but anyone with a URL can read the file. CORS is open so the web builds can call the API.
 
@@ -169,35 +169,6 @@ The server pushes `chat:message` with `{ key, message }` to every member in the 
 
 ## Health and shutdown
 
-`/health` always answers while the process runs, and `/ready` also needs the database, so a database outage does not make Render restart the service (`render.yaml` uses `/health`). Point a load balancer or a deploy gate at `/ready`.
+`/health` always answers while the process runs, and `/ready` also needs the database, so a database outage does not make a host restart the service when it health-checks `/health`. Point a load balancer or a deploy gate at `/ready`.
 
 On SIGTERM or Ctrl+C the server stops taking new connections, answers `/ready` with `503`, lets open requests finish (up to 10 seconds), closes the chat sockets and the database pool, then exits.
-
-## Deployment
-
-Deploy on Render against a PostgreSQL database.
-
-**Blueprint (recommended).** In Render choose **New, Blueprint** and select the repository. `render.yaml` creates the web service with these settings and asks you for the `sync:false` variables:
-
-| Setting | Value |
-| --- | --- |
-| Root Directory | `backend` |
-| Build Command | `npm ci` |
-| Start Command | `npm start` |
-| Health Check Path | `/health` |
-
-**Manual service.** If you create the service by hand in the dashboard, `render.yaml` is ignored, so enter the same four values yourself. The Build Command must be `npm ci` (or `npm install`); if it is just `npm`, the build prints npm's help text and fails.
-
-Then:
-
-1. Set the environment variables (see [Configuration](#configuration)). `JWT_SECRET` can be generated by Render. Add `PUBLIC_BASE_URL` with the service's public address.
-2. From your machine, with `.env` pointing at the production database, run `npm run migrate` and `npm run create-admin`.
-3. Open `https://<your-service>.onrender.com/health` to check it is up.
-
-Notes:
-
-- **Node version.** Render picks the newest Node that satisfies `engines.node` (`>=20`). If a newer release causes trouble, add the environment variable `NODE_VERSION=22`.
-- **Free tier sleeps.** The service sleeps when idle, so the first request after a pause can take up to a minute.
-- **Uploads.** Render's free disk is ephemeral, so uploaded files are lost on redeploy or restart. Attach a persistent disk or move uploads to object storage (S3 or R2) before relying on them.
-- **E-mail.** Render's free tier blocks outgoing SMTP ports (25, 465 and 587), so e-mail only sends from a paid plan or another host; the mailer gives up after about 10 seconds. Until e-mail works, new accounts cannot sign in and forgot-password cannot deliver its code.
-- **Android emulator.** A local API is reached from an Android emulator at `http://10.0.2.2:3000`.

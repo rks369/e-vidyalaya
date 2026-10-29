@@ -126,19 +126,6 @@ New passwords reach people only by e-mail, so use addresses you can open while t
 
 ## Deployment
 
-- **API**: deploy `backend/` on Render (blueprint in `render.yaml`), then run `npm run migrate` and `npm run create-admin` against the production database. See [Deployment in the backend guide](backend/README.md#deployment).
+- **API**: deploy `backend/` (a blueprint for Render is in `render.yaml`), set the environment variables from `backend/.env.example`, then run `npm run migrate` and `npm run create-admin` against the production database.
 - **Web apps**: build the user and admin apps separately and host them as two static sites. See [Build](frontend/README.md#build) in the frontend guide.
 - **Android**: build one APK or app bundle per flavor. Release builds are signed with the debug key until you add your own signing config.
-
-## Known limitations
-
-- Chat only works for the director today. Teachers and students open the same chat screens, which load their lists from director-only API routes, so the tabs are empty for them.
-- There is no edit or delete for classes, subjects, people, notes or institutes, and the API has no update or delete routes yet.
-- The admin app has sign-in but no forgot-password or change-password screen, although the backend supports both.
-- The privacy policy and terms text is placeholder text and must be replaced before the app is published.
-- The theme follows the device or browser setting; there is no in-app theme switch.
-- iOS flavors are not configured; only the Android flavors exist.
-- Chat history from the old Firestore chat is not migrated; conversations start empty.
-- Uploaded files are public by URL (random names, no login needed to read them).
-- On Render's free tier, uploaded files are lost on redeploy and outgoing SMTP is blocked (see [backend/README.md](backend/README.md#deployment)).
-- The backend has no automated tests yet. The frontend has 37 widget and unit tests.
