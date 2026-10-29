@@ -1,4 +1,4 @@
-# eVidyalaya
+# E-Vidyalaya
 
 **A campus management platform for schools and colleges: one Flutter codebase, two apps.**
 
