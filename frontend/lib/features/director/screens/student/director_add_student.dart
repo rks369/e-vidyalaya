@@ -30,7 +30,7 @@ class _DirectorAddStudentState extends State<DirectorAddStudent> {
 
   }
 
-  getClassList() async {
+  Future<void> getClassList() async {
 
     DirectorService.getClassList().then((value) {
 
@@ -190,12 +190,8 @@ class _DirectorAddStudentState extends State<DirectorAddStudent> {
                           name: name.text,
                           email: email.text,
                           phone: mobile.text,
-                          // ignore: prefer_interpolation_to_compose_strings
                           userName:
-                              name.text.split(' ')[0] +
-                              roll.text +
-                              '@' +
-                              domain,
+                              '${name.text.split(' ')[0]}${roll.text}@$domain',
                           designation: 'Student',
                           profilePicture: 'profilePicture',
                           currentClass: currentClass,
