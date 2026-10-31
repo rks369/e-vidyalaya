@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white" alt="Node.js">
   <img src="https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white" alt="Android">
   <img src="https://img.shields.io/badge/Web-4285F4?logo=googlechrome&logoColor=white" alt="Web">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/rks369/e-vidyalaya" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-PolyForm_Noncommercial_1.0.0-blue" alt="License: PolyForm Noncommercial"></a>
 </p>
 
 > **How it started.** A B.Tech project (2022–23): two Flutter apps that talked straight to a MySQL database. Rebuilt in 2026 as one Flutter app with two flavors on a Node.js API, with role-based access and every secret moved out of the code.
@@ -361,7 +361,10 @@ flutter build apk --release --flavor user -t lib/main_user.dart --dart-define-fr
 
 ## License
 
-Released under the [MIT License](LICENSE).
+Free for personal, educational and non-commercial use under the
+[PolyForm Noncommercial License 1.0.0](LICENSE).
+
+For commercial use, contact me at riteshsaini331@gmail.com.
 
 ## Author
 
