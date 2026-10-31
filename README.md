@@ -142,11 +142,67 @@ The same screen at three widths. The side menu becomes a permanent panel from 84
 <summary><b>🛠️ Admin app</b></summary>
 <br>
 
+#### Admin sign in
+
+##### Light
+
 <table>
   <tr>
-    <td align="center"><img src="docs/screenshots/admin/mobile/light/60_admin_login.png" alt="Admin app: Admin sign in" width="230"><br><sub>Admin sign in</sub></td>
-    <td align="center"><img src="docs/screenshots/admin/mobile/light/61_institutes.png" alt="Admin app: Institutes" width="230"><br><sub>Institutes</sub></td>
-    <td align="center"><img src="docs/screenshots/admin/mobile/light/62_add_institute.png" alt="Admin app: Add an institute" width="230"><br><sub>Add an institute</sub></td>
+    <td align="center" width="70%"><img src="docs/screenshots/admin/web/light/60_admin_login.jpeg" alt="Admin app: Admin sign in, light, web" width="100%"></td>
+    <td align="center" width="30%"><img src="docs/screenshots/admin/mobile/light/60_admin_login.png" alt="Admin app: Admin sign in, light, mobile" width="100%"></td>
+  </tr>
+</table>
+
+##### Dark
+
+<table>
+  <tr>
+    <td align="center" width="70%"><img src="docs/screenshots/admin/web/dark/60_admin_login.jpeg" alt="Admin app: Admin sign in, dark, web" width="100%"></td>
+    <td align="center" width="30%"><img src="docs/screenshots/admin/mobile/dark/60_admin_login.png" alt="Admin app: Admin sign in, dark, mobile" width="100%"></td>
+  </tr>
+</table>
+
+---
+
+#### Institutes
+
+##### Light
+
+<table>
+  <tr>
+    <td align="center" width="70%"><img src="docs/screenshots/admin/web/light/61_institutes.jpeg" alt="Admin app: Institutes, light, web" width="100%"></td>
+    <td align="center" width="30%"><img src="docs/screenshots/admin/mobile/light/61_institutes.png" alt="Admin app: Institutes, light, mobile" width="100%"></td>
+  </tr>
+</table>
+
+##### Dark
+
+<table>
+  <tr>
+    <td align="center" width="70%"><img src="docs/screenshots/admin/web/dark/61_institutes.jpeg" alt="Admin app: Institutes, dark, web" width="100%"></td>
+    <td align="center" width="30%"><img src="docs/screenshots/admin/mobile/dark/61_institutes.png" alt="Admin app: Institutes, dark, mobile" width="100%"></td>
+  </tr>
+</table>
+
+---
+
+#### Add an institute
+
+##### Light
+
+<table>
+  <tr>
+    <td align="center" width="70%"><img src="docs/screenshots/admin/web/light/62_add_institute.jpeg" alt="Admin app: Add an institute, light, web" width="100%"></td>
+    <td align="center" width="30%"><img src="docs/screenshots/admin/mobile/light/62_add_institute.png" alt="Admin app: Add an institute, light, mobile" width="100%"></td>
+  </tr>
+</table>
+
+##### Dark
+
+<table>
+  <tr>
+    <td align="center" width="70%"><img src="docs/screenshots/admin/web/dark/62_add_institute.jpeg" alt="Admin app: Add an institute, dark, web" width="100%"></td>
+    <td align="center" width="30%"><img src="docs/screenshots/admin/mobile/dark/62_add_institute.png" alt="Admin app: Add an institute, dark, mobile" width="100%"></td>
   </tr>
 </table>
 
@@ -236,14 +292,6 @@ The same screen at three widths. The side menu becomes a permanent panel from 84
 <table>
   <tr>
     <td align="center"><img src="docs/screenshots/user/web/light/10_director_dashboard.png" alt="User app: Director dashboard, light theme, desktop" width="100%"><br><sub>Director dashboard (light)</sub></td>
-  </tr>
-</table>
-
-**Admin app**
-
-<table>
-  <tr>
-    <td align="center"><img src="docs/screenshots/admin/web/light/61_institutes.png" alt="Admin app: Institutes, light theme, desktop" width="100%"><br><sub>Institutes (light)</sub></td>
   </tr>
 </table>
 
